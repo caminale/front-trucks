@@ -1,0 +1,9 @@
+<form class="ui form">
+<div class="field">
+  <label>enter the id to delete the user</label>
+  {{input value=id type=text}}
+</div>
+<button class="ui button" type="reset" {{action 'deleteUser'}}>delete</button>
+</form>
+
+{{yield}}
