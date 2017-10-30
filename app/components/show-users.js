@@ -3,5 +3,4 @@ import Ember from 'ember';
 
 export default Component.extend({
 
-
 });
