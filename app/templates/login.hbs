@@ -1,0 +1,17 @@
+<h1>LOGIN</h1>
+
+<form {{action 'authenticate' on='submit'}}>
+  <label for="identification">Login</label>
+  {{input id='identification' placeholder='Enter Login' value=identification}}
+  <label for="password">Password</label>
+  {{input id='password' placeholder='Enter Password' type='password' value=password}}
+  <button type="submit">Login</button>
+  {{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+  {{/if}}
+  {{#if session.isAuthenticated}}
+    <p>connecté</p>
+  {{else}}
+    <p>pas connecté</p>
+  {{/if}}
+</form>
