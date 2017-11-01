@@ -1,15 +1,31 @@
 <div class="menu">
   {{#if session.isAuthenticated}}
-    <a {{action 'logout'}}>Logout</a>
+    <a {{action 'logout'}}>
+      <button class="ui google plus button">
+        <i class="google plus icon"></i>
+        Logout
+      </button>
+    </a>
     {{show-users  users=user}}
     {{delete-user action='deleteUser'}}
     {{update-user action='updateUser'}}
   {{else}}
-    {{#link-to 'login'}}Login{{/link-to}}
+    {{#link-to 'login'}}
+      <button class="ui instagram button">
+        <i class="instagram icon"></i>
+        Login
+      </button>
+    {{/link-to}}
+    {{#link-to 'register'}}
+      <button class="ui instagram button">
+        <i class="instagram icon"></i>
+        Register
+      </button>
+    {{/link-to}}
   {{/if}}
+
 </div>
 <div class="main">
   {{outlet}}
 </div>
 
-{{outlet}}
