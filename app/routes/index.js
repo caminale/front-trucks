@@ -12,12 +12,15 @@ export default Ember.Route.extend(ApplicationRouteMixin,{
       const user = this.get('store').createRecord('user', {name},{password});
       user.save();
     },
-    deleteUser(id) {
-      this.store.findRecord('user', id ,{ backgroundReload: false }).then(function(user) {
+    async deleteUser(id) {
+      try {
+        const user = await this.store.findRecord('user', id ,{ backgroundReload: false });
         user.deleteRecord();
         user.get('isDeleted'); // => true
         user.save(); // => DELETE to /users/1
-      });
+      } catch (err) {
+        // Do something to show that something went wrong
+      }
     },
     updateUser(id,userName) {
       this.get('store').findRecord('user',id).then(function (user) {
