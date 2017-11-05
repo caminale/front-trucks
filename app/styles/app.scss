@@ -1,0 +1,9 @@
+@import 'colors.scss';
+@import 'routes/login.scss';
+
+body {
+  background-color: $gray;
+}
+body > .grid {
+  height: 100%;
+}
