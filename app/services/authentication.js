@@ -1,7 +1,10 @@
 import Service from '@ember/service';
+import Ember from 'ember';
 
 export default Service.extend({
   session: Ember.inject.service('session'),
+  store: Ember.inject.service(),
+
   async register(name, password) {
     try {
       const user = this.get('store').createRecord('user', { name, password });
@@ -10,11 +13,15 @@ export default Service.extend({
       $.ajax({
         url:' http://localhost:8080/availableUser',
         type:'POST',
-        data: { name, password }
+        data: { name, password },
+        success: function (data) {
+          if(data.result === 'okUserNotExisting')
+            user.save();
+        }
       });
-      user.save();
+      this.authenticate( name, password );
     } catch (err) {
-      // Problem
+      console.log(err);
     }
   },
   async authenticate(identification, password) {
