@@ -1,26 +1,13 @@
 import Route from '@ember/routing/route';
 import Ember from 'ember';
+import UnauthenticatedRouteMixin from
+  'ember-simple-auth/mixins/unauthenticated-route-mixin';
 
-export default Route.extend({
-  session: Ember.inject.service('session'),
-
+export default Route.extend(UnauthenticatedRouteMixin, {
+  authentication: Ember.inject.service('authentication'),
   actions: {
     register(name, password) {
-      const user = this.get('store').createRecord('user', {name:name, password:password});
-// we make an request to server to know if the user exist
-      const request = $.ajax({
-        url:' http://localhost:8080/availableUser',
-        type:'POST',
-        data: {name: name, password: password}
-      });
-      request.then(function(results){
-        console.log(results);
-//if it doesn't exist we can creat it
-        if(results.result ==='okUserNotExisting'){
-          user.save();
-        }
-      });
-    },
-
+      this.get('authentication').register(name, password);
+    }
   }
 });

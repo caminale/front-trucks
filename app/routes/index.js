@@ -9,7 +9,7 @@ export default Ember.Route.extend(ApplicationRouteMixin,{
   },
   actions: {
     createUser(name,password) {
-      const user = this.get('store').createRecord('user', {name},{password});
+      const user = this.get('store').createRecord('user', { name }, { password });
       user.save();
     },
     async deleteUser(id) {
