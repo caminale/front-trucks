@@ -1,32 +1,34 @@
 import Service from '@ember/service';
 import Ember from 'ember';
+import ENV from '../config/environment';
 
 export default Service.extend({
   session: Ember.inject.service('session'),
   store: Ember.inject.service(),
 
-  async register(name, password) {
+  async register( name, password ) {
+    let auth = false;
+    console.log(`${ENV.APP.API_HOST}/availableUser`);
     try {
       const user = this.get('store').createRecord('user', { name, password });
-
       // we make an request to server to know if the user exist
       $.ajax({
-        url:' http://localhost:8080/availableUser',
+        url: `${ENV.APP.API_HOST}/availableUser`,
         type:'POST',
         data: { name, password },
         success: function (data) {
           if(data.result === 'okUserNotExisting')
             user.save();
+          auth = true;
         }
-      });
-      this.authenticate( name, password );
+    });
     } catch (err) {
       console.log(err);
     }
   },
-  async authenticate(identification, password) {
+  async authenticate( name, password ) {
     try {
-      await this.get('session').authenticate('authenticator:oauth2', identification, password);
+      await this.get('session').authenticate('authenticator:oauth2', name, password );
     } catch (reason) {
       this.set('loginError', reason.error || reason);
     }

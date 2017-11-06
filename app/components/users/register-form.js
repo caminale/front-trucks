@@ -1,14 +1,12 @@
 import Component from '@ember/component';
-import Ember from 'ember';
 
 export default Component.extend({
-  session: Ember.inject.service('session'),
-
-  identification: '',
+  name: '',
   password: '',
+
   actions: {
     register(){
-      this.sendAction('register', this.get('identification'),this.get('password'));
+      this.sendAction('register', this.get('name'),this.get('password'));
     }
   }
 });

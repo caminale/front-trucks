@@ -12,7 +12,7 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            {{input id='identification' placeholder='Enter Login' value=identification}}
+            {{input id='name' placeholder='Enter Login' value=name}}
           </div>
         </div>
         <div class="field">
@@ -21,7 +21,7 @@
             {{input id='password' placeholder='Enter Password' type='password' value=password}}
           </div>
         </div>
-        {{#link-to '/'}}
+        {{#link-to 'login'}}
           <a{{action 'register'}}>
             <button type="submit" class="ui fluid large teal submit button">Register</button>
           </a>

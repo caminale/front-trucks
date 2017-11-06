@@ -6,8 +6,8 @@ import UnauthenticatedRouteMixin from
 export default Route.extend(UnauthenticatedRouteMixin, {
   authentication: Ember.inject.service('authentication'),
   actions: {
-    register(name, password) {
-      this.get('authentication').register(name, password);
+    register( name, password ) {
+      this.get('authentication').register( name, password );
     }
   }
 });

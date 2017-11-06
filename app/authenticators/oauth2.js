@@ -1,6 +1,7 @@
 // app/authenticators/oauth2.js
 import OAuth2PasswordGrant from 'ember-simple-auth/authenticators/oauth2-password-grant';
+import ENV from '../config/environment';
 
 export default OAuth2PasswordGrant.extend({
-  serverTokenEndpoint: "http://localhost:8080/auth",
+  serverTokenEndpoint: `${ENV.APP.API_HOST}/auth`,
 });
