@@ -3,9 +3,9 @@
   {{#each cities as |city|}}
     {{#marker-layer location=city.position}}
       {{#popup-layer}}
-        <h3>The Oregon Convention Center</h3>
-        777 NE Martin Luther King Jr Blvd<br>
-        Portland, OR 97232 cities.name
+        <li>{{city.name}}
+          it position is
+          {{city.position}}</li>
       {{/popup-layer}}
     {{/marker-layer}}
   {{/each}}
