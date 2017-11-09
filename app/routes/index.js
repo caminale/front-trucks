@@ -2,9 +2,12 @@ import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
 export default Ember.Route.extend(ApplicationRouteMixin,{
+  searchPosition: Ember.inject.service(),
+
   model() {
     return Ember.RSVP.hash({
-      users: this.get('store').findAll('user')
+      users: this.get('store').findAll('user'),
+      cities: this.get('store').findAll('city'),
     });
   },
   actions: {
@@ -27,6 +30,9 @@ export default Ember.Route.extend(ApplicationRouteMixin,{
         user.set('name',userName);
         user.save();
       })
+    },
+    searchPos(adress) {
+      this.get('searchPosition').searchPositionGoogle(adress);
     }
   }
 });

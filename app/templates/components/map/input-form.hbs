@@ -1,0 +1,8 @@
+<form class="ui form">
+  <div class="field">
+    <label>enter address</label>
+    {{input value=address type=text}}
+  </div>
+  <button class="ui button" type="submit" {{action 'searchPos'}}>envoyer</button>
+</form>
+{{yield}}

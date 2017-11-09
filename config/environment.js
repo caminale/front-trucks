@@ -17,7 +17,10 @@ module.exports = function(environment) {
         Date: false
       }
     },
-
+    googleAPI: {
+      urlRequest:'https://maps.googleapis.com/maps/api/geocode/json?address=',
+      apiKey: 'AIzaSyBEcpyEZQXGI_b60n4W0CBYQ2U2a1EWMIU',
+    },
     APP: {
       API_HOST: 'http://localhost:8080',
       // Here you can pass flags/options to your application instance
