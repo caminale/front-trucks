@@ -6,11 +6,11 @@
         Logout
       </button>
     </a>
-    {{show-users  users=user}}
+    {{show-users  users=model.users}}
     {{delete-user action='deleteUser'}}
     {{update-user action='updateUser'}}
-    {{map/leaflet-map}}
-    {{map/input-form searchPos="searchPos"}}
+    {{map/leaflet-map cities=model.cities}}
+    {{map/input-form searchPos="searchPos" }}
   {{else}}
     {{#link-to 'login'}}
       <button class="ui instagram button">

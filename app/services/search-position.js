@@ -10,7 +10,9 @@ export default Service.extend({
     const ressources = 200;
     let lat = data.results[0].geometry.location.lat;
     let lng = data.results[0].geometry.location.lng;
-    const city = this.get('store').createRecord('city', { name: address, ressources :ressources, lat, lng });
+    let position = [lat, lng] ;
+    console.log(position);
+    const city = this.get('store').createRecord('city', { name: address, ressources :ressources, position});
     city.save();
   },
   async request( address ) {
