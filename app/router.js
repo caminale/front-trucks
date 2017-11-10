@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('register');
   this.route('tables');
   this.route('other');
+  this.route('dashboard');
 });
 
 export default Router;

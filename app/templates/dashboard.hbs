@@ -1,0 +1,21 @@
+<div class="menu">
+  {{map/nav-bar logout="logout"}}
+    <br>
+    <a {{action 'logout'}}>
+      <button class="ui google plus button">
+        <i class="google plus icon"></i>
+        Logout
+      </button>
+    </a>
+    <br><br>
+    <div class="ui divider"></div>
+    <div class="ui two column vertically padded grid">
+      <div class="column">
+        {{map/leaflet-map cities=model.cities}}
+      </div>
+      <div class="column">
+        {{map/input-form searchPos="searchPos" }}
+      </div>
+    </div>
+</div>
+  {{outlet}}

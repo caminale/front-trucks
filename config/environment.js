@@ -28,8 +28,8 @@ module.exports = function(environment) {
     },
     'ember-simple-auth': {
       authenticationRoute: 'login',
-      routeAfterAuthentication: '',
-      routeIfAlreadyAuthenticated: ''
+      routeAfterAuthentication: 'dashboard',
+      routeIfAlreadyAuthenticated: 'dashboard'
     }
   };
 

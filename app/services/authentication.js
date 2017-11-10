@@ -7,7 +7,6 @@ export default Service.extend({
   store: Ember.inject.service(),
 
   async register( name, password ) {
-    let auth = false;
     console.log(`${ENV.APP.API_HOST}/availableUser`);
     try {
       const user = this.get('store').createRecord('user', { name, password });
@@ -19,7 +18,6 @@ export default Service.extend({
         success: function (data) {
           if(data.result === 'okUserNotExisting')
             user.save();
-          auth = true;
         }
     });
     } catch (err) {
