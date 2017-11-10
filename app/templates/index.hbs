@@ -1,16 +1,26 @@
 <div class="menu">
   {{#if session.isAuthenticated}}
+    {{users/nav-bar}}
+    <br>
+
     <a {{action 'logout'}}>
       <button class="ui google plus button">
         <i class="google plus icon"></i>
         Logout
       </button>
     </a>
-    {{show-users  users=model.users}}
-    {{delete-user action='deleteUser'}}
-    {{update-user action='updateUser'}}
-    {{map/leaflet-map cities=model.cities}}
-    {{map/input-form searchPos="searchPos" }}
+
+    <br><br>
+
+    <div class="ui divider"></div>
+    <div class="ui two column vertically padded grid">
+      <div class="column">
+
+      </div>
+      <div class="column">
+        {{map/input-form searchPos="searchPos" }}
+      </div>
+    </div>
   {{else}}
     {{#link-to 'login'}}
       <button class="ui instagram button">
@@ -30,4 +40,7 @@
 <div class="main">
   {{outlet}}
 </div>
+
+
+
 

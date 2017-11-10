@@ -3,8 +3,13 @@
 @import 'routes/map.scss';
 
 body {
-   background-color: $gray;
+    background-color: $gray;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
  }
 body > .grid {
   height: 100%;
 }
+
+

@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
 
   actions: {
     logout  () {
+      console.log('deconnection');
       this.get('session').invalidate();
     }
   }
