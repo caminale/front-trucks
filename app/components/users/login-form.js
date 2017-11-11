@@ -3,7 +3,6 @@ import Ember from 'ember';
 
 export default Component.extend({
   session: Ember.inject.service('session'),
-
   name: '',
   password: '',
   actions: {

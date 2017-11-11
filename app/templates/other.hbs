@@ -1,15 +1,14 @@
-{{users/nav-bar}}
-<br>
+<div class="menu">
+  {{map/nav-bar logout="logout"}}
+  <br>
 
 
-<div class="ui two column centered grid">
-  <div class="column">
-    {{other/show-users  users=model.users}}
-    {{other/delete-user action='deleteUser'}}
-    {{other/update-user action='updateUser'}}
+  <div class="ui two column centered grid">
+    <div class="column">
+      {{other/show-users  users=model.users}}
+      {{other/delete-user action='deleteUser'}}
+      {{other/update-user action='updateUser'}}
+    </div>
   </div>
 </div>
-
-<div class="main">
-  {{outlet}}
-</div>
+{{outlet}}
