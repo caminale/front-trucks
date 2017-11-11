@@ -8,10 +8,10 @@ export default Ember.Mixin.create({
         verticalAlign: 'middle'
       },
       {
-        label: 'name',
+        label: 'First Name',
         valuePath: 'name',
         verticalAlign: 'middle'
-      }
+      },
     ];
   })
 });
