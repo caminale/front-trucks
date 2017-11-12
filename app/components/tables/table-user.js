@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Columns from '../../mixins/columns';
+import Columns from '../../mixins/columns-user';
 import layout from '../../templates/components/tables/table-user';
 import { Table } from 'ember-semantic-ui-table';
 

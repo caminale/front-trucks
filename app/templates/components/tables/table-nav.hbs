@@ -1,9 +1,15 @@
 <div class="ui two column centered grid">
   <div class="column">
     <div class="ui three item menu column ">
-      <a class="item">Users</a>
-      <a class="item">Cities</a>
-      <a class="item">Trucks</a>
+      {{#link-to 'table-user-page'}}
+      <a class="item">Users&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+      {{/link-to}}
+      {{#link-to 'table-city-page'}}
+      <a class="item">Cities&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+      {{/link-to}}
+      {{#link-to 'table-truck-page'}}
+      <a class="item">Trucks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+      {{/link-to}}
     </div>
   </div>
 </div>

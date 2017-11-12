@@ -10,9 +10,11 @@ Router.map(function() {
   this.route('/');
   this.route('login');
   this.route('register');
-  this.route('tables');
+  this.route('table-user-page');
   this.route('other');
   this.route('dashboard');
+  this.route('table-city-page');
+  this.route('table-truck-page');
 });
 
 export default Router;
