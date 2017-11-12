@@ -18,5 +18,6 @@ module.exports = function() {
       ]
     }
   });
+  app.import('vendor/gmaps.js');
   return app.toTree();
 };

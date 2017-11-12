@@ -34,6 +34,12 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV.contentSecurityPolicy = {
+      'script-src': "'self' 'unsafe-eval' https://*.googleapis.com https://*.gstatic.com",
+      'img-src': "'self' https://*.googleapis.com https://*.gstatic.com",
+      'font-src': "'self' https://*.gstatic.com",
+      'style-src': "'self' 'unsafe-inline' https://*.googleapis.com"
+    }
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
