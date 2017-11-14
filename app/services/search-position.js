@@ -5,6 +5,7 @@ import ENV from '../config/environment';
 export default Service.extend({
   store: Ember.inject.service(),
   ajax: Ember.inject.service(),
+  insertMarker: Ember.inject.service(),
 
   async createCity( data, address ) {
     const ressources = 200;
@@ -14,8 +15,16 @@ export default Service.extend({
       latitude: lat,
       longitude: lng
     };
+    const marker = {
+      lat: lat,
+      lng: lng,
+      name: address,
+      typeMarker: "city"
+    };
+    console.log('le marker dans search pos est : '+JSON.stringify(marker));
     const city = this.get('store').createRecord('city', { name: address, ressources, position});
     city.save();
+    this.get( 'insertMarker' ).insertMarkerCity( marker );
   },
   async request( address ) {
     let data = $.ajax({
