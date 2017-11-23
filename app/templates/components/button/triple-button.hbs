@@ -1,0 +1,32 @@
+<div class="ui 2 column grid">
+  <div class="one column row">
+    <div class="column">
+      <div class="ui action input">
+        {{input value=namecreate type=text placeholder="name"}}
+        <button class="ui primary button" type="submit" {{action 'create'}}>
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="ui action input">
+      {{input value=oldname type=text placeholder="old name"}}
+      {{input value=newname type=text placeholder="new name"}}
+      <button class="ui primary button" type="submit" {{action 'update'}}>
+        Update
+      </button>
+    </div>
+  </div>
+  <div class="one column row">
+    <div class="column">
+      <div class="ui action input">
+        {{input value=namedelete type=text placeholder="name"}}
+        <button class="ui primary button" type="submit" {{action 'delete'}}>
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{{yield}}
