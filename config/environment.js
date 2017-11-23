@@ -17,6 +17,13 @@ module.exports = function(environment) {
         Date: false
       }
     },
+    googleMap: {
+      // your configuration goes in here
+      libraries: ['places', 'geometry', 'drawing', 'visualization'], // milage varies based on g-maps supported features
+      apiKey: 'AIzaSyC32lAlY-QGz1gF34mLg5-cis022ZBotco',
+      lazyLoad: false, // default
+      language: 'Js'
+    },
     googleAPI: {
       urlRequest:'https://maps.googleapis.com/maps/api/geocode/json?address=',
       apiKey: 'AIzaSyBEcpyEZQXGI_b60n4W0CBYQ2U2a1EWMIU',
@@ -30,10 +37,20 @@ module.exports = function(environment) {
       authenticationRoute: 'login',
       routeAfterAuthentication: 'dashboard',
       routeIfAlreadyAuthenticated: 'dashboard'
+    },
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com",
+      'font-src': "'self' fonts.gstatic.com",
+      'connect-src': "'self' maps.gstatic.com",
+      'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com",
+      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com"
     }
   };
 
+
   if (environment === 'development') {
+
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

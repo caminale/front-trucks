@@ -4,7 +4,7 @@
     <div class="ui divider"></div>
     <div class="ui two column vertically padded grid">
       <div class="column">
-        {{map/leaflet-map cities=model.cities}}
+        {{map/google-map  markers=mapMarkers}}
       </div>
       <div class="column">
         {{map/input-form searchPos="searchPos" }}

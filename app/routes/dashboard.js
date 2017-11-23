@@ -6,15 +6,12 @@ export default Ember.Route.extend(ApplicationRouteMixin,{
   session: Ember.inject.service('session'),
   sortProperties: ['name:asc'],
   user: Ember.computed.sort('model.users', 'sortProperties'),
-
   model() {
-    return Ember.RSVP.hash({
-      users: this.get('store').findAll('user'),
-      cities: this.get('store').findAll('city'),
-    });
+    return this.get( 'store' ).findAll('marker');
   },
 
   actions: {
+
     createUser( name, password ) {
       const user = this.get('store').createRecord('user', { name }, { password });
       user.save();
@@ -37,7 +34,8 @@ export default Ember.Route.extend(ApplicationRouteMixin,{
     },
     searchPos( adress ) {
       this.get( 'searchPosition' ).searchPositionGoogle( adress );
-    },
+      this.get( 'setupController' );
+      },
     logout() {
       this.get( 'session' ).invalidate();
     }
