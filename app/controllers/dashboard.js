@@ -10,11 +10,10 @@ export default Controller.extend({
           id: x.__data.marker.name,
           lat: x.__data.marker.lat,
           lng: x.__data.marker.lng
-        }
+        };
         tab.pushObject(marker)
       }
     });
-    console.log("model: ", tab);
     return tab;
   }),
 });
