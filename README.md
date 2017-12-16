@@ -45,5 +45,5 @@ Specify what it takes to deploy your app.
 ## Authentification
 
 * we use ember-simple-auth, follow this video :
-  [ici](https://ember-simple-auth.com/)
+  [here](https://ember-simple-auth.com/)
 
