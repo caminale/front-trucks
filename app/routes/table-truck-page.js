@@ -1,16 +1,16 @@
 import Route from '@ember/routing/route';
-import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
 export default Route.extend(ApplicationRouteMixin, {
   model() {
     return this.get('store').findAll('truck');
   },
+  findtruck: Ember.inject.service('find-truck'),
   actions: {
     logout() {
       this.get('session').invalidate();
     },
-    create(name, type, id) {
+    createuser(name, type, id) {
       this.get('store').findRecord('user', id).then(user => {
         const truck = this.get('store').createRecord('truck', {
           name,
@@ -23,26 +23,28 @@ export default Route.extend(ApplicationRouteMixin, {
         });
       });
     },
-    update(oldname, newname, type, id) {
-      this.store.queryRecord('truck', {
-        filter: {
-          user: id,
-          name: oldname
-        }
-      }).then(function (truck) {
-        // do something with `tomster`
+    async update(oldname, newname, type, id) {
+      const truck = await  this.get('findtruck').gettruck( oldname, id );
+      const truckParsed = JSON.parse(truck);
+      this.get('store').findRecord('truck', truckParsed._id).then(function(truck) {
+        // ...after the record has loaded
         truck.set('name', newname);
         truck.save();
       });
     },
-    delete(name, type, id) {
-      this.store.queryRecord('truck', {
-        filter: {
-          user: id,
-          name: name
-        }
-      }).then(function (truck) {
+    async delete(name, type, id) {
+      const truck = await  this.get('findtruck').gettruck( name, id );
+      const truckParsed = JSON.parse(truck);
+      this.get('store').findRecord('truck', truckParsed._id).then(function (truck) {
         truck.destroyRecord(); // => DELETE to /posts/2
+      });
+      this.get('store').findRecord('truck',
+                                    truckParsed._id,
+                                    { backgroundReload: false })
+        .then(function(truck) {
+        truck.deleteRecord();
+        truck.get('isDeleted');
+        truck.save(); // => DELETE to /posts/1
       });
     },
   }

@@ -24,6 +24,7 @@ export default Service.extend({
       console.log(err);
     }
   },
+
   async authenticate( name, password ) {
     try {
       await this.get('session').authenticate('authenticator:oauth2', name, password );
