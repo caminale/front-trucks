@@ -35,9 +35,6 @@ export default Route.extend(ApplicationRouteMixin, {
     async delete(name, type, id) {
       const truck = await  this.get('findtruck').gettruck( name, id );
       const truckParsed = JSON.parse(truck);
-      this.get('store').findRecord('truck', truckParsed._id).then(function (truck) {
-        truck.destroyRecord(); // => DELETE to /posts/2
-      });
       this.get('store').findRecord('truck',
                                     truckParsed._id,
                                     { backgroundReload: false })
@@ -46,6 +43,12 @@ export default Route.extend(ApplicationRouteMixin, {
         truck.get('isDeleted');
         truck.save(); // => DELETE to /posts/1
       });
+      this.get('store').findRecord('user', id).then(user => {
+
+          user.set('trucks', user.get('trucks').filter(item => item !== truckParsed._id));
+          user.save();
+        });
+
     },
   }
 });
