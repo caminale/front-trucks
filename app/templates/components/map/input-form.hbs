@@ -1,8 +1,8 @@
 <form class="ui form">
   <div class="field">
-    <label>Enter address</label>
-    {{input value=address type=text}}
+    <h3>How many trucks do you want to launch ?</h3>
+    {{input class="nbtruckinput" placeholder="Number of trucks" value=address type=text}}
   </div>
-  <button class="ui button" type="submit" {{action 'searchPos'}}>envoyer</button>
+  <button class="ui positive basic button" type="submit" {{action 'searchPos'}}>Launch simulation</button>
 </form>
 {{yield}}

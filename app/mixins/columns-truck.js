@@ -12,11 +12,11 @@ export default Ember.Mixin.create({
         valuePath: 'name',
         verticalAlign: 'middle'
       },
-      {
-        label: 'User',
-        valuePath: 'user.name',
-        verticalAlign: 'middle'
-      },
+      // {
+      //   label: 'User',
+      //   valuePath: 'user.name',
+      //   verticalAlign: 'middle'
+      // },
       {
         label: 'Delivering',
         valuePath: 'delivering',

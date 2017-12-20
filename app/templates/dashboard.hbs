@@ -1,13 +1,36 @@
-<div class="menu">
-{{map/nav-bar logout="logout"}}
-  <br>
-  <div class="ui grid">
-    <div class="ten wide column">
-      {{map/google-map  markers=mapMarkers id="map"}}
-    </div>
-    <div class="six wide column">
-      {{map/input-form searchPos="searchPos" }}
+<div class="ui center grid">
+  <div class="column sixteen wide">
+    <div class="menu">
+      {{map/nav-bar logout="logout"}}
+      <br>
+      <div class="ui grid">
+        <div class="eleven wide column">
+          {{map/google-map  markers=model.mapMarkers id="map"}}
+        </div>
+        <div class="five wide column">
+          <h2>Hello, please set your parameters:</h2>
+          {{map/input-form searchPos="searchPos" }}
+
+          <br>
+          <hr>
+          <h2>Truck monitoring</h2>
+          <br>
+          <div class="ui one column centered grid">
+            <div class="column">
+              <h3>Truck status delivering</h3>
+              {{tables/table-truck model=model.truck}}
+              <h3>Truck status standby</h3>
+              {{tables/table-truck model=model.truck}}
+            </div>
+            <br>
+          </div>
+
+          <br>
+
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
 {{outlet}}

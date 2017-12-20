@@ -7,7 +7,12 @@ export default Ember.Route.extend(ApplicationRouteMixin,{
   sortProperties: ['name:asc'],
   user: Ember.computed.sort('model.users', 'sortProperties'),
   model() {
-    return this.get( 'store' ).findAll('marker');
+
+    return Ember.RSVP.hash({
+      marker: this.store.findAll('marker'),
+      truck: this.store.findAll('truck')
+    });
+
   },
 
   actions: {
