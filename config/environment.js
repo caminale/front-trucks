@@ -17,12 +17,12 @@ module.exports = function(environment) {
         Date: false
       }
     },
-    googleMap: {
-      // your configuration goes in here
-      libraries: ['places', 'geometry', 'drawing', 'visualization'], // milage varies based on g-maps supported features
-      apiKey: 'AIzaSyC32lAlY-QGz1gF34mLg5-cis022ZBotco',
-      lazyLoad: false, // default
-      language: 'Js'
+    'g-map':{
+      libraries: ['places', 'geometry'],
+      key: 'AIzaSyC32lAlY-QGz1gF34mLg5-cis022ZBotco',
+      version: '3.26',
+      language: 'Js',
+      protocol: 'https'
     },
     googleAPI: {
       urlRequest:'https://maps.googleapis.com/maps/api/geocode/json?address=',

@@ -1,2 +1,5 @@
-{{g-maps name="muchaBonita" lat=latitude lng=longitude zoom=myZoom markers=markers}}
+<button class="ui positive basic button" type="submit" {{action 'manageMarkers'}}>Launch simulation</button>
+{{#g-map lat=latitude lng=longitude zoom=myZoom as |context|}}
+  {{g-map-marker context lat=lat lng=lng}}
+{{/g-map}}
 {{yield}}
