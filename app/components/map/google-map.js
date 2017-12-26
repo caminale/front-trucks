@@ -1,4 +1,7 @@
+/*global google */
+
 import Component from '@ember/component';
+
 
 export default Component.extend({
   latitude: 48,
@@ -7,43 +10,63 @@ export default Component.extend({
   steps: '',
   lat: 0,
   lng: 0,
-  index: 0,
+  myIcon: {
+    url: "/assets/images/camtar.png",
+    size: new google.maps.Size(60,60),
+    scaledSize: new google.maps.Size(40,40),
+    anchor: new google.maps.Point(15, 15),
+    origin: new google.maps.Point(0, 0),
+    labelOrigin: new google.maps.Point(30, 15),
+  },
   actions: {
     manageMarkers: function () {
+      const steps = this.get('subStep').content;
+      let delay = 1000;
       let index = 0;
-     this.set('steps',this.get('subStep').content[0].__data.steps);
-      const pos = [];
       let i = 0;
-      this.get('steps').map((step) => {
-        pos.push(step.start_location);
+      let subStepsPos = [];
+      let subStepsDuration = [];
 
-      });
-      setInterval(() => {
-        if (i < this.get('steps').length) {
-          console.log(this.get('steps'))
+      const nextSubsteps = ( index, steps ) => {
+        let positions = [];
+        let durations = [];
+        try {
+          steps[index].__data.steps.map((subStep) => {
+            //push all position substeps
+            positions.push(subStep.start_location);
+            //push all duration substeps
+            durations.push(subStep.duration.value)
+          });
+        }catch (err) {
+          console.log(err);
+        }
+        return {positions, durations};
+      };
+      const setNewPositions = (lat, lng) => {
+        this.set('lat', lat);
+        this.set('lng', lng);
+      };
+      let timerId = setTimeout(function managerTimer() {
+        if (i === 0) {
+          subStepsPos = nextSubsteps(index,steps).positions;
+          subStepsDuration = nextSubsteps(index,steps).durations;
+          console.log(subStepsPos);
+        }
+        if (i < subStepsPos.length) {
+          //browse the array, to the end to go on next substep
+          setNewPositions(subStepsPos[i].lat, subStepsPos[i].lng);
+          console.log(subStepsPos[i].lat);
+          delay = 1000+subStepsDuration[i];
           i++;
         }
         else {
-          console.log('yolooo')
-          if (index < this.get('subStep').content.length) {
-            index++;
-            this.set('steps', this.get('subStep').content[index].__data.steps)
-            i = 0;
-            this.get('steps').map((step) => {
-              pos.push(step.start_location);
-
-            });
-          }
+          //when arrived to the end of the array, increment index to go on next step
+          i = 0;
+          index++;
         }
-        // console.log( pos[i].lat)
-        this.set('lat', pos[i].lat);
-        this.set('lng', pos[i].lng);
-        this.set('index',index);
-        console.log(this.get('lat')+'   '+this.get('lng')+ ' '+ this.get('index'))
+        timerId = setTimeout(managerTimer, delay);
 
-
-      }, 1000);
-
+      }, delay);
 
     }
   }
