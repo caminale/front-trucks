@@ -7,9 +7,6 @@ export default Component.extend({
   actions: {
     launchAlgo(){
       this.get('launchAlgoGenetic').launchAlgoGenetic();
-    },
-    launchSimulation() {
-
     }
   }
 });
