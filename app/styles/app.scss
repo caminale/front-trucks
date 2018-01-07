@@ -7,6 +7,7 @@ body {
     margin-right: 20px;
     margin-left: 20px;
     margin-top: 10px;
+    margin-bottom: 10px;
  }
 body > .grid {
   height: 100%;
@@ -36,4 +37,14 @@ body > .grid {
   border: 1px solid #DEDDDF;
   border-radius: 5px;
   background-color: white ;
+}
+
+.panel{
+  border: 1px solid #DEDDDF;
+  border-radius: 5px;
+  background-color: white ;
+  margin-right: 50px !important;
+  margin-left: 50px !important;
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
 }

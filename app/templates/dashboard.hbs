@@ -3,10 +3,7 @@
     <div class="menu">
       {{map/nav-bar logout="logout"}}
       <br>
-      <div class="ui grid">
-        <div class="eleven wide column">
-          {{map/google-map  markers=model.mapMarkers substep=model.substep id="map"}}
-        </div>
+      <div class="panel ui grid">
         <div class="five wide column">
           <h2>Hello, please set your parameters:</h2>
           {{map/input-form}}
@@ -26,8 +23,9 @@
           <br>
           <br>
           {{#link-to 'table-truck-page'}}<button class="ui grey basic button" type="submit">Manage your Trucks</button>{{/link-to}}
-          <br>
-
+        </div>
+        <div class="eleven wide column">
+          {{map/google-map  markers=model.mapMarkers substep=model.substep id="map"}}
         </div>
       </div>
     </div>
