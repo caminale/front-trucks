@@ -19,8 +19,9 @@ export default Component.extend({
     labelOrigin: new google.maps.Point(30, 15),
   },
   actions: {
-    manageMarkers: function () {
+    simulationMarkers : async function() {
       const steps = this.get('subStep').content;
+      console.log(steps)
       let delay = 1000;
       let index = 0;
       let i = 0;

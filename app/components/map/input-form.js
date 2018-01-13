@@ -5,8 +5,8 @@ export default Component.extend({
   address: '',
   launchAlgoGenetic: Ember.inject.service(),
   actions: {
-    launchAlgo(){
-      this.get('launchAlgoGenetic').launchAlgoGenetic();
+    launchAlgo: async function () {
+      await this.get('launchAlgoGenetic').launchAlgoGenetic();
     }
   }
 });
