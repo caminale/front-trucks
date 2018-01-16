@@ -5,38 +5,11 @@
       <br>
       <div class="panel ui grid">
         <div class="five wide column">
-          <h2>Hello, please set your parameters:</h2>
-          {{map/input-form}}
+          <h2>Hello, please launch the simulation when you're ready</h2>
+          {{map/input-form truck=model.truck launchtruck="launchtruck"}}
           <br>
           <div class="ui horizontal divider">
             Truck monitoring
-          </div>
-
-          <div class="ui statistics">
-            <div class=" statistic">
-              <div class="value">
-                2
-              </div>
-              <div class="label">
-                Truck delivering
-              </div>
-            </div>
-            <div class="statistic">
-              <div class="value">
-                1
-              </div>
-              <div class="label">
-                TRUCK STANDBY
-              </div>
-            </div>
-            <div class="statistic">
-              <div class="value">
-                788
-              </div>
-              <div class="label">
-                GEM earned
-              </div>
-            </div>
           </div>
           <br>
           <br>
@@ -44,9 +17,9 @@
           <div class="ui one column centered grid">
             <div class="column">
               <h3>A) Truck status delivering</h3>
-              {{tables/table-truck model=model.truck}}
+              {{tables/table-truck delivering=1 model=model.truck}}
               <h3>B) Truck status standby</h3>
-              {{tables/table-truck model=model.truck}}
+              {{tables/table-truck delivering=2 model=model.truck}}
             </div>
             <br>
           </div>

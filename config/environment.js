@@ -29,7 +29,7 @@ module.exports = function(environment) {
       apiKey: 'AIzaSyBEcpyEZQXGI_b60n4W0CBYQ2U2a1EWMIU',
     },
     APP: {
-      API_HOST: 'http://localhost:8080',
+      API_HOST: 'http://server.caminaleloic.ovh',
       // Here you can pass flags/options to your application instance
       // when it is created
     },

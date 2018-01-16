@@ -44,6 +44,14 @@ export default Ember.Route.extend(ApplicationRouteMixin,{
       },
     logout() {
       this.get( 'session' ).invalidate();
+    },
+    launchtruck( id ) {
+      console.log(`in function`);
+      this.get('store').findRecord('truck', id).then(truck => {
+        // ...after the record has loaded
+        truck.set('delivering', true);
+        truck.save();
+      });
     }
   }
 });
