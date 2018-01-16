@@ -5,7 +5,7 @@ export default Component.extend({
   address: '',
   launchAlgoGenetic: Ember.inject.service(),
   actions: {
-    launchAlgo() {
+    launchAlgo() { // async possible
       let trucks = this.get('truck');
       for (let i = 0; i <= trucks.content.length; i++) {
         if (trucks.content[i]._data.delivering === false) {

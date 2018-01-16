@@ -6,7 +6,6 @@
       <div class="panel ui grid">
         <div class="five wide column">
           <h2>Hello, please launch the simulation when you're ready</h2>
-          {{map/input-form truck=model.truck launchtruck="launchtruck"}}
           <br>
           <div class="ui horizontal divider">
             Truck monitoring
@@ -28,7 +27,7 @@
           {{#link-to 'table-truck-page'}}<button class="ui grey basic button" type="submit">Manage your Trucks</button>{{/link-to}}
         </div>
         <div class="eleven wide column">
-          {{map/google-map  markers=model.mapMarkers substep=model.substep id="map"}}
+          {{map/google-map  markers=model.mapMarkers truck=model.truck subStep=model.subStep id="map"}}
         </div>
       </div>
     </div>

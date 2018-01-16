@@ -1,9 +1,11 @@
 /*global google */
 
 import Component from '@ember/component';
+import Ember from "ember";
 
 
 export default Component.extend({
+  launchAlgoGenetic: Ember.inject.service(),
   latitude: 48,
   longitude: 2.34,
   myZoom: 6,
@@ -19,13 +21,27 @@ export default Component.extend({
     labelOrigin: new google.maps.Point(30, 15),
   },
   actions: {
-    manageMarkers: function () {
+    simulationMarkers : async function() {
       const steps = this.get('subStep').content;
+      console.log(steps);
       let delay = 1000;
       let index = 0;
       let i = 0;
       let subStepsPos = [];
       let subStepsDuration = [];
+      let trucks = this.get('truck');
+      for (let i = 0; i <= trucks.content.length; i++) {
+        if (trucks.content[i]._data.delivering === false) {
+          console.log(`Simulation Launched`);
+          this.sendAction('launchtruck', trucks.content[i].id);
+
+          this.get('launchAlgoGenetic').launchAlgoGenetic(trucks.content[i].id);
+          break;
+        }
+        else {
+          console.log(`not truck available`);
+        }
+      }
 
       const nextSubsteps = ( index, steps ) => {
         let positions = [];
