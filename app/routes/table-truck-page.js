@@ -6,11 +6,15 @@ export default Route.extend(ApplicationRouteMixin, {
     return this.get('store').findAll('truck');
   },
   findtruck: Ember.inject.service('find-truck'),
+  toast: Ember.inject.service(),
   actions: {
     logout() {
       this.get('session').invalidate();
     },
     createuser(name, type, id) {
+      let toast = this.get('toast');
+      let message = `Truck ${name} added`
+      toast.info(message, 'Added');
       this.get('store').findRecord('user', id).then(user => {
         const truck = this.get('store').createRecord('truck', {
           name,
@@ -24,6 +28,9 @@ export default Route.extend(ApplicationRouteMixin, {
       });
     },
     async update(oldname, newname, type, id) {
+      let toast = this.get('toast');
+      let message = `Truck ${oldname} updated to ${newname}`
+      toast.info(message, 'Updated');
       const truck = await  this.get('findtruck').gettruck( oldname, id );
       const truckParsed = JSON.parse(truck);
       this.get('store').findRecord('truck', truckParsed._id).then(function(truck) {
@@ -33,6 +40,9 @@ export default Route.extend(ApplicationRouteMixin, {
       });
     },
     async delete(name, type, id) {
+      let toast = this.get('toast');
+      let message = `Truck ${name} deleted`
+      toast.info(message, 'Deleted');
       const truck = await  this.get('findtruck').gettruck( name, id );
       const truckParsed = JSON.parse(truck);
       this.get('store').findRecord('truck',
